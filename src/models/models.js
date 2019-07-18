@@ -4,7 +4,7 @@ module.exports = {
   // Get All Books
   getBooks: () => {
     return new Promise((resolve, reject) => {
-      conn.query('SELECT book.bookid, book.name, book.writer, book.image, cat.category, loc.location FROM book INNER JOIN cat ON book.fk_cat=cat.catid INNER JOIN loc ON book.fk_loc=loc.locid ', (err, result) => {
+      conn.query('SELECT book.bookid, book.name, book.writer, book.des, book.image, cat.category, loc.location FROM book INNER JOIN cat ON book.fk_cat=cat.catid INNER JOIN loc ON book.fk_loc=loc.locid ', (err, result) => {
         if (!err) {
           resolve(result)
         } else {
@@ -18,7 +18,7 @@ module.exports = {
   nameBook: (name) => {
     const likeName = '%' + name + '%'
     return new Promise((resolve, reject) => {
-      conn.query('SELECT book.bookid, book.name, book.writer, book.image, cat.category, loc.location FROM book INNER JOIN cat ON book.fk_cat=cat.catid INNER JOIN loc ON book.fk_loc=loc.locid WHERE book.name LIKE ?', likeName, (err, result) => {
+      conn.query('SELECT book.bookid, book.name, book.writer, book.des, book.image, cat.category, loc.location FROM book INNER JOIN cat ON book.fk_cat=cat.catid INNER JOIN loc ON book.fk_loc=loc.locid WHERE book.name LIKE ?', likeName, (err, result) => {
         if (!err) {
           resolve(result)
         } else {
@@ -31,7 +31,7 @@ module.exports = {
   // Get by Id
   bookId: (bookid) => {
     return new Promise((resolve, reject) => {
-      conn.query('SELECT book.bookid, book.name, book.writer, book.image, cat.category, loc.location FROM book INNER JOIN cat ON book.fk_cat=cat.catid INNER JOIN loc ON book.fk_loc=loc.locid WHERE book.bookid = ?', bookid, (err, result) => {
+      conn.query('SELECT book.bookid, book.name, book.writer, book.des, book.image, cat.category, loc.location FROM book INNER JOIN cat ON book.fk_cat=cat.catid INNER JOIN loc ON book.fk_loc=loc.locid WHERE book.bookid = ?', bookid, (err, result) => {
         if (!err) {
         resolve(result)
       } else {
@@ -44,7 +44,7 @@ module.exports = {
   // Get By Category
   bookCategory: (category) => {
     return new Promise((resolve, reject) => {
-      conn.query('SELECT book.bookid, book.name, book.writer, book.image, cat.category, loc.location FROM book INNER JOIN cat ON book.fk_cat=cat.catid INNER JOIN loc ON book.fk_loc=loc.locid WHERE cat.category = ?', category, (err, result) => {
+      conn.query('SELECT book.bookid, book.name, book.writer, book.des, book.image, cat.category, loc.location FROM book INNER JOIN cat ON book.fk_cat=cat.catid INNER JOIN loc ON book.fk_loc=loc.locid WHERE cat.category = ?', category, (err, result) => {
         if (!err) {
           resolve(result)
         } else {
@@ -57,7 +57,7 @@ module.exports = {
   // Get By Location
   bookLocation: (location) => {
     return new Promise((resolve, reject) => {
-      conn.query('SELECT book.bookid, book.name, book.writer, book.image, cat.category, loc.location FROM book INNER JOIN cat ON book.fk_cat=cat.catid INNER JOIN loc ON book.fk_loc=loc.locid WHERE loc.location = ?', location, (err, result) => {
+      conn.query('SELECT book.bookid, book.name, book.writer, book.des, book.image, cat.category, loc.location FROM book INNER JOIN cat ON book.fk_cat=cat.catid INNER JOIN loc ON book.fk_loc=loc.locid WHERE loc.location = ?', location, (err, result) => {
         if (!err) {
           resolve(result)
         } else {

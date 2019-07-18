@@ -77,9 +77,11 @@ module.exports = {
       const data = {
         name: req.body.name,
         writer: req.body.writer,
+        des: req.body.des,
         fk_loc: req.body.fk_loc,
         fk_cat: req.body.fk_cat,
-        image: req.body.image
+        image: req.body.image,
+        created_at: new Date()
       }
   
       bookModels.postBook(data)
@@ -97,9 +99,11 @@ module.exports = {
       const data = {
         name: req.body.name,
         writer: req.body.writer,
+        des: req.body.des,
         fk_loc: req.body.fk_loc,
         fk_cat: req.body.fk_cat,
-        image: req.body.image
+        image: req.body.image,
+        updated_at: new Date(),
       }
       const bookid = req.params.bookid
 
